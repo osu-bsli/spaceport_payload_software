@@ -66,6 +66,7 @@ while(acceleration <= 5):
 
 # start recording / capturing voltage data
 # ----------------------------------------
+x = 0
 camera.start_recording(encoder, output)
 with open('voltage_data.csv', "a", newline='') as csv_file:
     while x < timer:
