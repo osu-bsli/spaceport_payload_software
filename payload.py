@@ -47,7 +47,7 @@ def get_acc(MSB, LSB):
     dataLSB = bus.read_byte_data(ACCELEROMETER_REGISTER, LSB)
     dataMSB = bus.read_byte_data(ACCELEROMETER_REGISTER, MSB)
     # convert data to 10 bits
-    accl = ((dataMSB & 0x03) * 256) + dataLSB
+    accl = ((dataMSB) * 256) + dataLSB
     if accl > 511:
         accl -= 1024
     return accl
