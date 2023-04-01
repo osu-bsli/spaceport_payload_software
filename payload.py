@@ -1,12 +1,17 @@
 # imports
 # -------
 import time
+import RPi.GPIO as GPIO
 from picamera2.encoders import H264Encoder
 from picamera2 import Picamera2
 from smbus import SMBus
 import random
 # -------
 
+# set to board mode
+GPIO.setmode(GPIO.BOARD)
+# set pin 37 (LED_OUT) to output mode
+GPIO.setup(37, GPIO.OUT)
 
 def twos_comp(val, bits):
 # compute the 2's complement of int value val
@@ -81,6 +86,7 @@ timer = time.process_time()
 
 # set value for timer stop
 timer_stop = (15 * 60.0)
+GPIO.output(37,HIGH)
 camera.start_recording(encoder, output)
 with open('voltage_data.csv', "a", newline='') as csv_file:
     current_time = 0
